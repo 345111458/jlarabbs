@@ -2,6 +2,8 @@
 
 @section('title', isset($category) ? $category->name : '话题列表')
 
+
+
 @section('content')
 
   <div class="row mb-5">
