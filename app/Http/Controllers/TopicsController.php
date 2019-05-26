@@ -44,14 +44,13 @@ class TopicsController extends Controller
 
 
 
+    public function index(Request $request, Topic $topic)
+    {
+        $topics = $topic->withOrder($request->order)->paginate(20);
+        return view('topics.index', compact('topics'));
+    }
 
 
-	public function index(Request $request,Topic $topic)
-	{
-
-		$topics = $topic->withOrder($request->order)->paginate(6);
-		return view('topics.index', compact('topics'));
-	}
 
     public function show(Request $request, Topic $topic)
     {
@@ -65,7 +64,6 @@ class TopicsController extends Controller
 
 	public function create(Topic $topic, Category $category)
 	{
-
         $categories = $category->all();
 
 		return view('topics.create_and_edit', compact('topic','categories'));
